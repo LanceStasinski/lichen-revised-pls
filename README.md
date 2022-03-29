@@ -6,6 +6,7 @@ Revised pls code and work flow for the aging lichen project.
 
 [generatePLSData](https://github.com/LanceStasinski/lichen-revised-pls/blob/main/lichen-revised-pls/generatePLSData.R) is the main function that calls all other functions in this package. It takes in a spectra object, a className (unit of classification such as Family), a boolean for whether age should be included as covariate in the model, the initial number of components to start with, the number of iterations to run each PLS procedure for, and a directory for where files should be stored. This directory needs a setup as follows:
 
+```bash
 output
 | - class (eg. family)
   |- no-age
@@ -16,6 +17,7 @@ output
     | - upsampled-modles (model objects generated during upsampling procedure)
     | - variable-importance (variable importance plots)
   | - with-age (same stucture as 'no-age' directory)
+```
 
 This function runs PLSDA using parallelization so that multiple cores on the machine can be used at a time in contrast to single threading. The function is set to use half of the available cores on your machine. The main products are the summary metrics (overall accuracy, number of components used), a confusion matrix, and variable importance plots that show the importance of the top 5 and bottom 5 components.
 
