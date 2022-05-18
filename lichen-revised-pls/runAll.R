@@ -10,7 +10,8 @@ install.packages(c('parallel', 'spectrolab', 'caret', 'dplyr', 'rlist',
 
 library(spectrolab)
 
-spectra = readRDS("spectra/lichen_spectra.rds")
+#spectra = readRDS("spectra/lichen_spectra.rds")
+spectra = readRDS("spectra/traindata_fgcint_spectra.rds")
 
 generatePLSData = readRDS('functions/generatePLSData.rds')
 base = 'output'
@@ -18,6 +19,11 @@ base = 'output'
 ################################################################################
 # Run for each class  
 ################################################################################
+
+#dawson's data
+
+generatePLSData(spectra = spectra, className = 'species', includeAge = F,
+                ncomps = 5, numIterations = 4, baseDirectory = base)
 
 # Species (scientificName)
 

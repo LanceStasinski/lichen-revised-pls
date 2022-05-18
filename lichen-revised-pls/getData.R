@@ -10,8 +10,8 @@ getData = function(directory, metricsDirectory, className, includesAge) {
   accuracies = c()
   for (i in 1:length(matrices)) {
     cm = readRDS(paste(directory, matrices[i], sep = '/'))
-    cmList = list.append(cmList, as.matrix(cm))
-    accuracies = append(accuracies, cm$overall[1])
+    cmList = list.append(cmList, as.matrix(cm$table, rownames = TRUE))
+    accuracies = append(accuracies, as.numeric(cm$overall[1]))
   }
   
   cmMean = t(Reduce("+", cmList)/length(matrices))
